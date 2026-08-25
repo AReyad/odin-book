@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   before_create :generate_username_from_email
+  has_many :authored_posts, class_name: "Post", foreign_key: "post_author_id"
 
   private
 
