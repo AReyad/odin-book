@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_211803) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_213802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "comment_author_id"
+    t.bigint "comment_post_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_author_id"], name: "index_comments_on_comment_author_id"
+    t.index ["comment_post_id"], name: "index_comments_on_comment_post_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -42,5 +52,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_211803) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "posts", column: "comment_post_id"
+  add_foreign_key "comments", "users", column: "comment_author_id"
   add_foreign_key "posts", "users", column: "post_author_id"
 end

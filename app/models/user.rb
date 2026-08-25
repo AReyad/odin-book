@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   before_create :generate_username_from_email
   has_many :authored_posts, class_name: "Post", foreign_key: "post_author_id"
+  has_many :post_comments, class_name: "Comment", foreign_key: "comment_author_id"
 
   private
 
