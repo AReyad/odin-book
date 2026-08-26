@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :followers, through: :active_relationships, source: :follower
   has_many :following, through: :passive_relationships, source: :followed
 
+  def follow(other_user)
+    passive_relationships.find_or_create_by(followed: other_user)
+  end
+
   private
 
   def generate_username_from_email
