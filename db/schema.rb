@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_213802) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_26_214040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,6 +30,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_213802) do
     t.bigint "post_author_id"
     t.datetime "updated_at", null: false
     t.index ["post_author_id"], name: "index_posts_on_post_author_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "followed_id"
+    t.bigint "follower_id"
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,4 +64,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_213802) do
   add_foreign_key "comments", "posts", column: "comment_post_id"
   add_foreign_key "comments", "users", column: "comment_author_id"
   add_foreign_key "posts", "users", column: "post_author_id"
+  add_foreign_key "relationships", "users", column: "followed_id"
+  add_foreign_key "relationships", "users", column: "follower_id"
 end
