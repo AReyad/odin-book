@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :following, through: :passive_relationships, source: :followed
 
   def follow(other_user)
+    return if self == other_user
+
     passive_relationships.find_or_create_by(followed: other_user)
   end
 
