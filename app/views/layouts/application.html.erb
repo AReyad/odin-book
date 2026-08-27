@@ -24,6 +24,15 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to "OdinBook", root_path %></li>
+          <li><%= button_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "Create post", new_post_path %></li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
