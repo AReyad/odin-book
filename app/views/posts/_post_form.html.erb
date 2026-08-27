@@ -1,0 +1,12 @@
+<div>
+	<%= form_with model: post do |form| %>
+	<div class="field">
+			<%= form.label :content %>
+			<br>
+			<%= form.textarea :content %>
+	</div>
+	<div class="action">
+		<%= form.submit %>
+	</div>
+	<% end %>
+</div>

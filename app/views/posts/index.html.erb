@@ -1,0 +1,8 @@
+<% @posts.each do |post| %>
+	<% if post_author?(post) %>
+		<%= link_to "Edit post", edit_post_path(post) %>
+		<%= button_to "Delete post", post, method: :delete %>
+	<% end %>
+	<%= render "posts/post", post: post %>
+	<hr>
+<% end %>
