@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
+  helper_method :post_author?
+
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   before_action :configure_permitted_parameters, if: :devise_controller?
   allow_browser versions: :modern
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  def post_author?(post)
+    current_user == post.post_author
+  end
 
   protected
 
