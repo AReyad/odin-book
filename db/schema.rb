@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_28_203207) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_28_204910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_28_203207) do
     t.bigint "comment_post_id"
     t.text "content"
     t.datetime "created_at", null: false
+    t.integer "likes_count", default: 0, null: false
     t.bigint "parent_comment_id"
     t.datetime "updated_at", null: false
     t.index ["comment_author_id"], name: "index_comments_on_comment_author_id"
@@ -40,6 +41,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_28_203207) do
     t.integer "comments_count", default: 0, null: false
     t.text "content"
     t.datetime "created_at", null: false
+    t.integer "likes_count", default: 0, null: false
     t.bigint "post_author_id"
     t.datetime "updated_at", null: false
     t.index ["post_author_id"], name: "index_posts_on_post_author_id"
