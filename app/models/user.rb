@@ -17,11 +17,11 @@ class User < ApplicationRecord
   end
 
   def following?(other_user)
-    passive_relationships.find_by(followed: other_user)
+    active_relationships.exists?(followed_id: other_user.id)
   end
 
   def followed_by?(other_user)
-    active_relationships.find_by(follower: other_user)
+    passive_relationships.exists?(follower_id: other_user.id)
   end
 
   private
