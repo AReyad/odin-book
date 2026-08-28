@@ -9,5 +9,10 @@
     <p><%= post.comments_count %></p>
     <h3>Comments</h3>
     <%= render partial: "comments/comment", collection: post.post_comments %>
+    <%= form_with url: comments_path do |form| %>
+        <%= form.text_field "comment[content]", placeholder: "Comment" %>
+        <%= form.hidden_field "post[id]", value: post.id %>
+        <%= form.submit "Post" %>
+    <% end %>
 </div>
 <hr>
