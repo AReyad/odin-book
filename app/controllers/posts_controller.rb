@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [ :index, :new, :create ]
   def index
-    @posts = Post.all.includes(:post_author, post_comments: [ :comment_author, :replies ])
+    @posts = Post.all.includes(:post_author, post_comments: [ :comment_author, { replies: :comment_author } ])
   end
 
   def new
