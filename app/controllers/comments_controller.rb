@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @comment = current_user.post_comments.build(comment_params)
     @comment.comment_post_id = params[:post][:id]
     @comment.save
+    redirect_back(fallback_location: root_path)
   end
 
   private
