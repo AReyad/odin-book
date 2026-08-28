@@ -17,6 +17,10 @@ class User < ApplicationRecord
     passive_relationships.find_or_create_by(followed: other_user)
   end
 
+  def to_param
+    username
+  end
+
   private
 
   def generate_username_from_email
