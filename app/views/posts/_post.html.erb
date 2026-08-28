@@ -6,6 +6,8 @@
     <p><%= display_user(post.post_author) %></p>
     <p><%= post.created_at %></p>
     <p><%= post.content %></p>
+    <p><%= post.likes_count %> Likes</p>
+    <%= display_like_button(post) %>
     <h3><%= post.comments_count %> Comments</h3>
     <%= render partial: "comments/comment", collection: post.parentless_comments %>
     <div style="margin-top: 25px;">
