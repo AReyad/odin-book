@@ -16,6 +16,14 @@ class User < ApplicationRecord
     username
   end
 
+  def following?(other_user)
+    passive_relationships.find_by(followed: other_user)
+  end
+
+  def followed_by?(other_user)
+    active_relationships.find_by(follower: other_user)
+  end
+
   private
 
   def generate_username_from_email
