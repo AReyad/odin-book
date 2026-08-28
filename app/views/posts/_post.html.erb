@@ -3,7 +3,7 @@
         <%= link_to "Edit post", edit_post_path(post) %>
         <%= button_to "Delete post", post, method: :delete %>
     <% end %>    
-    <p><%= post.post_author.display_name %></p>
+    <p><%= display_user(post.post_author) %></p>
     <p><%= post.created_at %></p>
     <p><%= post.content %></p>
     <h3><%= post.comments_count %> Comments</h3>
