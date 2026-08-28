@@ -1,7 +1,7 @@
 <div class="comment">
     <p><%= comment.comment_author.display_name %></p>
     <p><%= comment.content %></p>
-    <div class="reply" style="margin-left: 15px">
+    <div class="reply" style="margin-left: 25px">
     <%= render partial: "comments/reply", collection: comment.replies %>
     <%= form_with url: replies_path do |form| %>
         <%= form.text_field "reply[content]", placeholder: "Reply to #{comment.comment_author.display_name}" %>
