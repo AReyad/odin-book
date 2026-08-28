@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :active_relationships, source: :follower
   has_many :following, through: :passive_relationships, source: :followed
+  has_many :likes
 
   def follow(other_user)
     return if self == other_user
