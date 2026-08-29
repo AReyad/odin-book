@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user
   def show
+    @user_likes = current_user.likes
     @posts = @user.authored_posts
   end
 
