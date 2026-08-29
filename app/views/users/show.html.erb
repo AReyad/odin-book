@@ -3,5 +3,5 @@
 <% else %>
   <h2><%= @user.display_name %>'s profile</h2>
 <% end %>
-
+<%= display_follow_button(@user) %>
 <%= render partial: "posts/post", collection: @posts %>
