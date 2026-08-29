@@ -2,7 +2,7 @@
     <p><%= display_user(comment.comment_author)%></p>
     <p><%= comment.content %></p>
     <p><%= comment.likes_count %> Likes</p>
-    <%= display_like_button(comment) %>
+    <%= display_like_button(comment, @user_likes) %>
     <div class="reply" style="margin-left: 25px">
     <%= render partial: "comments/reply", collection: comment.replies %>
     <%= form_with url: replies_path do |form| %>

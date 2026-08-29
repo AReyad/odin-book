@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, except: [ :index, :new, :create ]
   def index
-    @posts = Post.all.includes(:post_author, parentless_comments: [ :comment_author, { replies: :comment_author } ])
+    @user_likes = current_user.likes
+    @posts = Post.all.includes(:post_author, parentless_comments: [ :comment_author, :likes, { replies: [ :comment_author, :likes ] } ])
   end
 
   def new

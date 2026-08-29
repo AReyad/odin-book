@@ -1,7 +1,7 @@
 <p><%= display_user(reply.comment_author) %></p>
 <p><%= reply.content %></p>
 <p><%= reply.likes_count %> Likes</p>
-<%= display_like_button(reply) %>
+<%= display_like_button(reply, @user_likes) %>
 
 
     

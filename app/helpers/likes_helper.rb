@@ -1,6 +1,6 @@
 module LikesHelper
-  def display_like_button(likeable)
-    like = current_user.likes.find_by(likeable: likeable)
+  def display_like_button(likeable, likes)
+    like = likes.find { |l| likeable.id == l.likeable_id }
     if like.nil?
       button_to "Like", likes_path, params: { like: { likeable_id: likeable.id, likeable_type: likeable.class.to_s } }
     else
