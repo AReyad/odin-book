@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user
   def show
     @user_likes = current_user.likes
-    @posts = @user.authored_posts
+    @posts = @user.authored_posts.includes(parentless_comments: [ :comment_author, { replies: [ :comment_author ] } ])
   end
 
   def index
