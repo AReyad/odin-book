@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @posts = @user.authored_posts
   end
 
+  def index
+    @users = User.all.where.not(id: current_user.id).where.not(id: current_user.active_relationships.select(:followed_id))
+  end
+
   private
 
   def set_user

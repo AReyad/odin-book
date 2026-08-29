@@ -1,0 +1,4 @@
+<h1>Discover People</h1>
+<% @users.each do |user| %>
+  <p><%= user.display_name %> <%= display_follow_button(user) %> </p>
+<% end %>
