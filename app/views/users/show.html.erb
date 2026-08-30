@@ -3,5 +3,10 @@
 <% else %>
   <h2><%= @user.display_name %>'s profile</h2>
 <% end %>
+<div>
+  <p><%= @user.following_count %> Following</p>
+  <p><%= @user.followers_count %> Followers</p>
+</div>
 <%= display_follow_button(@user) %>
 <%= render partial: "posts/post", collection: @posts %>
+
