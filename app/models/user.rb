@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: %i[github]
 
   before_create :generate_username_from_email
 
@@ -22,6 +23,15 @@ class User < ApplicationRecord
 
   def followed_by?(other_user)
     passive_relationships.exists?(follower_id: other_user.id)
+  end
+
+  def self.from_omniauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.display_name = auth.info.name
+      user.skip_confirmation!
+    end
   end
 
   private
