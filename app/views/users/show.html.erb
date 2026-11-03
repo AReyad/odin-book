@@ -3,6 +3,7 @@
 <% else %>
   <h2><%= @user.display_name %>'s profile</h2>
 <% end %>
+<%= display_avatar(@user) %>
 <div>
   <p><%= @user.following_count %> Following</p>
   <p><%= @user.followers_count %> Followers</p>

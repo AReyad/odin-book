@@ -10,4 +10,10 @@ module UsersHelper
       button_to "Follow", relationships_path(user), params: { user_id: user.id }
     end
   end
+
+  def display_avatar(user)
+    return image_tag user.avatar, class: "profile-picture" if user.avatar
+
+    content_tag(:div, nil, class: "profile-picture")
+  end
 end

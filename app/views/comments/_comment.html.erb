@@ -1,5 +1,6 @@
 <div class="comment">
     <p><%= display_user(comment.comment_author)%></p>
+    <p><%= display_avatar(comment.comment_author) %></p>
     <p><%= comment.content %></p>
     <p><%= comment.likes_count %> Likes</p>
     <%= display_like_button(comment, @user_likes) %>

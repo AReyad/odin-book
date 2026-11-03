@@ -4,6 +4,7 @@
         <%= button_to "Delete post", post, method: :delete %>
     <% end %>    
     <p><%= display_user(post.post_author) %></p>
+    <p><%= display_avatar(post.post_author) %></p>
     <p><%= post.created_at %></p>
     <p><%= post.content %></p>
     <p><%= post.likes_count %> Likes</p>
